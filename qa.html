@@ -52,9 +52,29 @@
                     <a href="qa.html" class="hover:text-cyan-400 transition-colors">Q&A</a>
                     <a href="index.html#entry" class="text-magenta-500 hover:text-cyan-400 transition-all font-bold border border-magenta-500/50 px-4 py-1.5 rounded glow-button">ENTRY</a>
                 </div>
+
+                <!-- モバイルメニューボタン -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-cyan-400 hover:text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
+
+    <!-- モバイルメニュードロップダウン -->
+    <div id="mobile-menu" class="hidden md:hidden fixed w-full bg-dark/95 backdrop-blur-md border-b border-cyan-500/30 z-40 top-16 left-0">
+        <div class="px-4 py-6 space-y-4 font-cyber text-center flex flex-col">
+            <a href="index.html#concept" class="mobile-link text-lg text-white hover:text-cyan-400 transition-colors">CONCEPT</a>
+            <a href="index.html#schedule" class="mobile-link text-lg text-white hover:text-cyan-400 transition-colors">SCHEDULE</a>
+            <a href="index.html#rules" class="mobile-link text-lg text-white hover:text-cyan-400 transition-colors">RULES</a>
+            <a href="qa.html" class="mobile-link text-lg text-white hover:text-cyan-400 transition-colors">Q&A</a>
+            <a href="index.html#entry" class="mobile-link text-lg text-magenta-500 hover:text-cyan-400 transition-all font-bold mt-4 inline-block border border-magenta-500/50 py-2 rounded glow-button">ENTRY</a>
+        </div>
+    </div>
 
     <!-- ヘッダーセクション -->
     <section class="pt-32 pb-12 relative border-b border-dashed border-cyan-900/50 bg-cyan-950/20">
@@ -141,5 +161,26 @@
             </p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = document.querySelectorAll('.mobile-link');
+
+            // ハンバーガーメニューの開閉トグル
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // メニュー内のリンクが押されたら閉じる
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -55,7 +55,7 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button class="text-cyan-400 hover:text-white focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-cyan-400 hover:text-white focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -64,6 +64,17 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden fixed w-full bg-dark/95 backdrop-blur-md border-b border-cyan-500/30 z-40 top-16 left-0">
+        <div class="px-4 py-6 space-y-4 font-cyber text-center flex flex-col">
+            <a href="#concept" class="mobile-link text-lg text-white hover:text-cyan-400 transition-colors">CONCEPT</a>
+            <a href="#schedule" class="mobile-link text-lg text-white hover:text-cyan-400 transition-colors">SCHEDULE</a>
+            <a href="#rules" class="mobile-link text-lg text-white hover:text-cyan-400 transition-colors">RULES</a>
+            <a href="qa.html" class="mobile-link text-lg text-white hover:text-cyan-400 transition-colors">Q&A</a>
+            <a href="#entry" class="mobile-link text-lg text-magenta-500 hover:text-cyan-400 transition-all font-bold mt-4 inline-block border border-magenta-500/50 py-2 rounded glow-button">ENTRY</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center relative pt-16">
@@ -276,5 +287,26 @@
             </p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const links = document.querySelectorAll('.mobile-link');
+
+            // ハンバーガーメニューの開閉トグル
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // メニュー内のリンクが押されたら閉じる
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
