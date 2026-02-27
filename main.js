@@ -170,4 +170,43 @@ document.addEventListener('DOMContentLoaded', () => {
             toast.classList.add('opacity-100');
         });
     }
+
+    // グローバルスコープからHTMLのonclickで呼び出せるように定義
+    window.copyHashtag = function() {
+        const textToCopy = '#VocaUnit2026';
+        
+        // クリップボードAPIを使用してコピー
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            // コピー成功時のトースト通知
+            const oldToast = document.getElementById('copy-toast');
+            if (oldToast) oldToast.remove();
+
+            const toast = document.createElement('div');
+            toast.id = 'copy-toast';
+            toast.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 bg-cyan-900/90 border border-cyan-400 text-white px-6 py-3 rounded-full backdrop-blur font-body font-bold z-[100] transform transition-all duration-300 translate-y-10 opacity-0 shadow-[0_0_20px_rgba(34,211,238,0.4)] flex items-center gap-2';
+            
+            toast.innerHTML = `
+                <svg class="w-5 h-5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                コピーしました！
+            `;
+
+            document.body.appendChild(toast);
+
+            // アニメーション表示
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            });
+
+            // 2.5秒後に消す
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }).catch(err => {
+            console.error('コピーに失敗しました', err);
+            alert('コピーに失敗しました。お手数ですが手動でコピーしてください。');
+        });
+    };
 });
