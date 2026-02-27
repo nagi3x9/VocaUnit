@@ -16,11 +16,12 @@
                 extend: {
                     colors: {
                         cyan: {
-                            400: '#22d3ee',
-                            500: '#06b6d4',
+                            400: 'var(--color-primary-light, #22d3ee)',
+                            500: 'var(--color-primary, #06b6d4)',
                         },
                         magenta: {
-                            500: '#d946ef',
+                            400: 'var(--color-secondary-light, #e879f9)',
+                            500: 'var(--color-secondary, #d946ef)',
                         },
                         dark: '#0a0a16',
                         panel: '#111122'
@@ -289,24 +290,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            const links = document.querySelectorAll('.mobile-link');
-
-            // ハンバーガーメニューの開閉トグル
-            btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-            });
-
-            // メニュー内のリンクが押されたら閉じる
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                });
-            });
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>

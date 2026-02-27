@@ -7,10 +7,12 @@
 @layer utilities {
     /* サイバーグリッド背景 */
     .cyber-grid {
-        background-size: 40px 40px;
+        background-size: 50px 50px;
         background-image: 
-            linear-gradient(to right, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+            linear-gradient(to right, var(--color-primary-dark, rgba(34, 211, 238, 0.1)) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-primary-dark, rgba(34, 211, 238, 0.1)) 1px, transparent 1px);
+        transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+        animation: grid-move 20s linear infinite;
     }
 
     /* グリッチエフェクト */
@@ -31,26 +33,26 @@
     
     .glitch::before {
         left: 3px;
-        text-shadow: -2px 0 #d946ef;
+        text-shadow: -2px 0 var(--color-secondary, #d946ef);
         clip: rect(44px, 450px, 56px, 0);
         animation: glitch-anim 5s infinite linear alternate-reverse;
     }
     
     .glitch::after {
         left: -3px;
-        text-shadow: -2px 0 #22d3ee;
+        text-shadow: -2px 0 var(--color-primary, #22d3ee);
         clip: rect(44px, 450px, 56px, 0);
         animation: glitch-anim2 5s infinite linear alternate-reverse;
     }
 
     /* グローリングエフェクトボタン */
     .glow-button {
-        box-shadow: 0 0 10px rgba(217, 70, 239, 0.2), inset 0 0 10px rgba(217, 70, 239, 0.2);
+        box-shadow: 0 0 10px var(--color-secondary, rgba(217, 70, 239, 0.5));
     }
     
     .glow-button:hover {
-        box-shadow: 0 0 15px rgba(34, 211, 238, 0.5), inset 0 0 10px rgba(34, 211, 238, 0.3);
-        border-color: rgba(34, 211, 238, 0.5);
+        box-shadow: 0 0 20px var(--color-secondary, rgba(217, 70, 239, 0.8)), 
+                    inset 0 0 10px var(--color-secondary, rgba(217, 70, 239, 0.5));
     }
 }
 

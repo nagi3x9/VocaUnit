@@ -163,24 +163,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            const links = document.querySelectorAll('.mobile-link');
-
-            // ハンバーガーメニューの開閉トグル
-            btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-            });
-
-            // メニュー内のリンクが押されたら閉じる
-            links.forEach(link => {
-                link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
-                });
-            });
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
